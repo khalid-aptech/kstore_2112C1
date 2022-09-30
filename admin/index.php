@@ -30,6 +30,46 @@
                             <input type="submit" name="login" class="btn btn-primary" value="login" />
                         </form>
                         <!-- /Form  End -->
+
+                        <?php
+
+                        if(isset($_POST["login"]))
+                        {
+
+                    
+                        include "config.php";
+
+                        $username = $_POST["username"];
+                        $password = $_POST["password"];
+
+                        $query = "SELECT `user_id`,`username`,`role` FROM `user` WHERE `username` = '{$username}' AND `password` = '{$password}'";
+
+                        $result =  mysqli_query($conn,$query);
+
+                        if(mysqli_num_rows($result)>0)
+                        {
+                            while($row = mysqli_fetch_assoc($result))
+                            {
+                                session_start();
+
+                                $_SESSION["username"] = $row["username"];
+                                $_SESSION["user_id"] = $row["user_id"];
+                                $_SESSION["user_role"] = $row["role"];
+                                header("location:http://localhost:82/kj/admin/products.php");
+                            }
+                        }
+                        else
+                        {
+                            echo "username and password did not match";
+                        }
+
+
+                        
+                        
+                    }
+
+                        
+                        ?>
                     </div>
                 </div>
             </div>
