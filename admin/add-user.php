@@ -19,7 +19,7 @@
 
             <div class="col-md-offset-3 col-md-6">
                 <!-- Form Start -->
-                <form action="<?php $_SERVER["PHP_SELF"] ?>" method="POST" autocomplete="off">
+                <form action="" method="POST" autocomplete="off">
                     <div class="form-group">
                         <label>First Name</label>
                         <input type="text" name="fname" class="form-control" placeholder="First Name" required>
@@ -51,4 +51,46 @@
         </div>
     </div>
 </div>
+
+<?php
+if(isset($_POST["save"]))
+{
+    $user_fname = $_POST["fname"];
+$user_lname = $_POST["lname"];
+$user_name = $_POST["user"];
+$user_password = md5($_POST["password"]);
+$user_role = $_POST["role"];
+
+include "config.php";
+
+$query = "SELECT * FROM `user` WHERE username = '{$user_name}'";
+
+$result  = mysqli_query($conn, $query);
+
+if(mysqli_num_rows($result)>0)
+{
+    echo "user alraedy exist";
+
+}
+else
+{
+    $query1 = "INSERT INTO `user`(`first_name`, `last_name`, `username`, `password`, `role`) VALUES ('{$user_fname}','{$user_lname}','{$user_name}','{$user_password}','{$user_role}')";
+
+    mysqli_query($conn, $query1);
+
+   header("Location:http://localhost:82/kj/admin/users.php");
+
+    
+
+}
+
+
+
+
+
+
+}
+
+
+?>
 <?php include "footer.php"; ?>
