@@ -1,3 +1,18 @@
+<?php 
+
+session_start();
+
+
+if(isset($_SESSION["username"]))
+{
+    header("location:http://localhost:82/kstore_2111b1/admin/products.php");
+
+}
+
+
+?>
+
+
 <!doctype html>
 <html>
    <head>
@@ -55,7 +70,8 @@
                                 $_SESSION["username"] = $row["username"];
                                 $_SESSION["user_id"] = $row["user_id"];
                                 $_SESSION["user_role"] = $row["role"];
-                                header("location:http://localhost:82/kj/admin/products.php");
+
+                                header("location:http://localhost:82/kstore_2111b1/admin/products.php");
                             }
                         }
                         else

@@ -1,18 +1,17 @@
-
-<?php
-
-include "config.php";
+<?php 
 
 session_start();
+
+
 if(!isset($_SESSION["username"]))
 {
-    header("location:http://localhost:82/kj/admin/index.php");
+    header("location:http://localhost:82/kstore_2111b1/admin/index.php");
+
 }
 
 
-
-
 ?>
+
 
 
 <!DOCTYPE html>
@@ -44,7 +43,7 @@ if(!isset($_SESSION["username"]))
                     <!-- /LOGO -->
                       <!-- LOGO-Out -->
                     <div class="col-md-offset-9  col-md-1">
-                        <a href="logout.php" class="admin-logout" >logout</a>
+                        <a href="logout.php" class="admin-logout" >Hello <?php echo $_SESSION["username"]; ?> logout</a>
                     </div>
                     <!-- /LOGO-Out -->
                 </div>
@@ -60,12 +59,27 @@ if(!isset($_SESSION["username"]))
                             <li>
                                 <a href="products.php">Products</a>
                             </li>
+
+
+                            <?php
+                            
+                            if($_SESSION["user_role"]=="1")
+
+                            {
+
+                        
+                            ?>
+
+
                             <li>
                                 <a href="category.php">Category</a>
                             </li>
                             <li>
                                 <a href="users.php">Users</a>
                             </li>
+
+
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>
