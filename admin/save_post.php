@@ -49,6 +49,7 @@ $query = "INSERT INTO `post`(`title`, `description`, `category`, `post_date`, `a
 
 mysqli_query($conn, $query);
 
+header("location:http://localhost:82/kstore/admin/products.php");
 
 
 ?>

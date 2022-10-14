@@ -78,7 +78,7 @@ else
 
     mysqli_query($conn, $query1);
 
-   header("Location:http://localhost:82/kj/admin/users.php");
+   header("Location:http://localhost:82/kstore/admin/users.php");
 
     
 

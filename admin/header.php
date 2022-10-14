@@ -5,7 +5,7 @@ session_start();
 
 if(!isset($_SESSION["username"]))
 {
-    header("location:http://localhost:82/kstore_2111b1/admin/index.php");
+    header("location:http://localhost:82/kstore/admin/index.php");
 
 }
 
